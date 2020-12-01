@@ -26,7 +26,6 @@ export class AnadirPage implements OnInit {
       cantidad : cantidad,
       imagen: imagen
     });
-    this.router.navigate(['/anadir']);
   }
     
   }
