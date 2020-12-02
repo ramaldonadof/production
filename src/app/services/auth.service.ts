@@ -56,7 +56,7 @@ async login(email, pass)
       this.logout();
     } else {
       loading.dismiss();
-      this.router.navigate(['/stock']);
+      this.router.navigate(['/home']);
     }
   })
 } //end of login

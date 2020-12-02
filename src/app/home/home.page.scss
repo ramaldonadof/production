@@ -6,6 +6,7 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  color: blueviolet
 }
 
 #container strong {
@@ -24,4 +25,12 @@
 
 #container a {
   text-decoration: none;
+}
+ion-label{
+  color: #40ac6b
+
+}
+ion-toolbar{
+  color: #40ac6b
+
 }
