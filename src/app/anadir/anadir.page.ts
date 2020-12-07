@@ -19,7 +19,7 @@ export class AnadirPage implements OnInit {
 
     console.log(codigo, producto, proveedor, cantidad),
     console.log('clicked!')
-    firebase.database().ref('stock/').child(codigo).set({
+    firebase.firestore().collection('comida').add({
       id: codigo,
       producto: producto,
       proveedor: proveedor,
