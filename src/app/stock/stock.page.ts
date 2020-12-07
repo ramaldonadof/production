@@ -14,14 +14,23 @@ export class StockPage implements OnInit, OnChanges {
   llenado()
   {
     var objects = [];
-    firebase.database().ref('stock/').on('value', function(snapshot) {
-      snapshot.forEach(function(object) {
-        objects.push({ id: object.key, cantidad: object.child('cantidad').val(), producto: object.child('producto').val(),
-        imagen: object.child('imagen').val()});
+    let ref = firebase.firestore().collection('comida');
+    ref.get()
+      .then(snapshot => {
+        if (snapshot.empty) {
+          console.log('No matching documents.');
+          return;
+        }
+
+        snapshot.forEach(doc => {
+          objects.push(doc.data());
+        });
+      })
+      .catch(err => {
+        console.log('Error getting documents', err);
       });
-      console.log(objects)
-      //alert('There are '+objects.length+' votes');
-    });
+      console.log(objects);
+
     return objects;
   }
 
@@ -41,8 +50,22 @@ export class StockPage implements OnInit, OnChanges {
 
   delete(id, producto)
   {
-    console.log('Hola este es testClick ' + producto);
-    firebase.database().ref('stock/' + id+'/').remove();
+    var ref = firebase.firestore().collection('comida');
+    ref.where('producto','==',producto).get()
+      .then(snapshot => {
+        if (snapshot.empty) {
+          console.log('No matching documents.');
+          return;
+        }
+
+        snapshot.forEach(doc => {
+          console.log(doc.id, '=>', doc.data());
+          ref.doc(doc.id).delete();
+        });
+      })
+      .catch(err => {
+        console.log('Error getting documents', err);
+      });
     this.stocks = this.llenado();
   }
 
