@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +12,14 @@ import { AngularFireDatabase } from '@angular/fire/database';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  items: Observable<any[]>;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    firestore: AngularFireDatabase
+    firestore: AngularFirestore
   ) {
+    this.items = firestore.collection('items').valueChanges();
     this.initializeApp();
   }
 
