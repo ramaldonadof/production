@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="dark">
-    <ion-title>Añadir Insumo</ion-title>
+    <ion-title>Añadir Producto</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,8 +11,8 @@
         <ion-card-content>
           
           <form>
-          <ion-label>CÓDIGO</ion-label>
-          <ion-input type="text" placeholder="Ingresar Código" #codigo></ion-input>
+          <ion-label>NOMBRE</ion-label>
+          <ion-input type="text" placeholder="Ingresar Nombre" #nombre></ion-input>
           </form>
 
         </ion-card-content>
@@ -22,22 +22,11 @@
         <ion-card-content>
 
           <form>
-          <ion-label>PRODUCTO</ion-label>
-          <ion-input type="text" placeholder="Nombre Producto" #producto></ion-input>
+          <ion-label>DESCRIPCIÓN</ion-label>
+          <ion-input type='multi-line' placeholder="Nombre Descripción" #decripcion></ion-input>
           </form>
         </ion-card-content>
-      </ion-card>  
-
-      <ion-card>
-        <ion-card-content>
-         
-          <form>
-          <ion-label>PROVEEDOR</ion-label> 
-          <ion-input type="text" placeholder="Nombre Proveedor" #proveedor></ion-input>
-          </form>
-        </ion-card-content>
-      
-      </ion-card>  
+      </ion-card>
                         
       <ion-card>
         <ion-card-content>
@@ -45,6 +34,17 @@
           <form>
           <ion-label>CANTIDAD</ion-label>  
           <ion-input type="number" placeholder="Ingresar Cantidad" #cantidad></ion-input>
+          </form>
+
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-content>
+          
+          <form>
+          <ion-label>PRECIO(U)</ion-label>  
+          <ion-input type="number" placeholder="Ingresar precio" #precio></ion-input>
           </form>
 
         </ion-card-content>
@@ -64,8 +64,9 @@
      </ion-col>
   </ion-row>
 
-  <ion-button class="Guardado" (click)= "saveNewDates(codigo.value, producto.value, proveedor.value, cantidad.value, imagen.value)" shape="round" fill="outline" >Guardar</ion-button>
-  <ion-button class="Retornar" shape="round" fill="outline" [routerLink]="['/stock']">Salir</ion-button>
+  <ion-button class="Guardado" (click)= "saveNewDates(nombre.value, decripcion.value,
+    cantidad.value, precio.value ,imagen.value)" shape="round" fill="outline" >Guardar</ion-button>
+  <ion-button class="Retornar" shape="round" fill="outline" onClick="history.go(-1);">Salir</ion-button>
 
 
 
