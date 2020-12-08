@@ -29,15 +29,15 @@
   <ion-grid fixed>
     <ion-row>
         <ion-segment>
-          <ion-segment-button value="crear">
+          <ion-segment-button value="crear" (click)="anadir()">
             <ion-label>CREAR PRODUCTO</ion-label>
           </ion-segment-button>
           
-          <ion-segment-button value="eliminar">
+          <ion-segment-button value="eliminar" (click)="eliminar()">
             <ion-label>ELIMINAR PRODUCTO</ion-label>
           </ion-segment-button>
 
-            <ion-segment-button value="stock">
+            <ion-segment-button value="stock" (click)="stock()">
               <ion-label>STOCK</ion-label>
             </ion-segment-button>
 

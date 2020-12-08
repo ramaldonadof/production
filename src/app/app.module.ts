@@ -14,6 +14,9 @@ import {FormsModule} from '@angular/forms';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 import { environment } from '../environments/environment.prod';
 
 //services
@@ -30,7 +33,9 @@ import {AuthGuard} from './guards/auth.guard';
     AppRoutingModule,
     FormsModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule
   ],
   providers: [
     AuthService,

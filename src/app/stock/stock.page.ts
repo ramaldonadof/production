@@ -14,14 +14,25 @@ export class StockPage implements OnInit, OnChanges {
   llenado()
   {
     var objects = [];
-    firebase.database().ref('stock/').on('value', function(snapshot) {
-      snapshot.forEach(function(object) {
-        objects.push({ id: object.key, cantidad: object.child('cantidad').val(), producto: object.child('producto').val(),
-        imagen: object.child('imagen').val()});
+    let ref = firebase.firestore().collection('comida');
+    ref.get()
+      .then(snapshot => {
+        if (snapshot.empty) {
+          console.log('No matching documents.');
+          return;
+        }
+
+        snapshot.forEach(doc => {
+          objects.push({nombre: doc.data().nombre, descripcion: doc.data().descripcion, proveedor: doc.data().proveedor,
+            cantidad: doc.data().cantidad, precio: doc.data().precio, imagen: doc.data().imagen,
+            fecha_creacion: doc.data().fecha_creacion});
+        });
+      })
+      .catch(err => {
+        console.log('Error getting documents', err);
       });
-      console.log(objects)
-      //alert('There are '+objects.length+' votes');
-    });
+      console.log(objects);
+
     return objects;
   }
 
@@ -39,10 +50,26 @@ export class StockPage implements OnInit, OnChanges {
     this.router.navigate(['/anadir']);
   }
 
-  delete(id, producto)
+  delete(producto, fecha_creacion)
   {
-    console.log('Hola este es testClick ' + producto);
-    firebase.database().ref('stock/' + id+'/').remove();
+    var ref = firebase.firestore().collection('comida');
+    ref.where('nombre','==',producto).get()
+      .then(snapshot => {
+        if (snapshot.empty) {
+          console.log('No matching documents.');
+          return;
+        }
+
+        snapshot.forEach(doc => {
+          console.log(doc.id, '=>', doc.data());
+          
+          if(fecha_creacion == doc.data().fecha_creacion)
+          ref.doc(doc.id).delete();
+        });
+      })
+      .catch(err => {
+        console.log('Error getting documents', err);
+      });
     this.stocks = this.llenado();
   }
 

@@ -36,13 +36,16 @@
     <ion-thumbnail slot="start">
     </ion-thumbnail>
     <ion-label>
-      Código
-    </ion-label>
-    <ion-label>
       Nombre
     </ion-label>
     <ion-label>
+      Descripcion
+    </ion-label>
+    <ion-label>
       Cantidad
+    </ion-label>
+    <ion-label>
+      Fecha_creacion
     </ion-label>
   </ion-item>
 
@@ -52,15 +55,18 @@
         <img src={{stock.imagen}}>
       </ion-thumbnail>
       <ion-label>
-        {{stock.id}}
+        {{stock.nombre}}
       </ion-label>
       <ion-label>
-        {{stock.producto}}
+        {{stock.descripcion}}
       </ion-label>
       <ion-label>
         {{stock.cantidad}}
       </ion-label>
-      <ion-button color = dark (click)="delete(stock.id,stock.producto)">
+      <ion-label>
+        {{stock.fecha_creacion}}
+      </ion-label>
+      <ion-button color = dark (click)="delete(stock.nombre,stock.fecha_creacion)">
         <ion-icon name="trash"></ion-icon>
       </ion-button>
       <ion-button color = dark>
