@@ -50,7 +50,7 @@ export class StockPage implements OnInit, OnChanges {
     this.router.navigate(['/anadir']);
   }
 
-  delete(producto, fecha_actual)
+  delete(producto, fecha_creacion)
   {
     var ref = firebase.firestore().collection('comida');
     ref.where('nombre','==',producto).get()
@@ -63,7 +63,7 @@ export class StockPage implements OnInit, OnChanges {
         snapshot.forEach(doc => {
           console.log(doc.id, '=>', doc.data());
           
-          if(fecha_actual == doc.data().fecha_actual)
+          if(fecha_creacion == doc.data().fecha_creacion)
           ref.doc(doc.id).delete();
         });
       })

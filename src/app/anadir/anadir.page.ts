@@ -19,8 +19,8 @@ export class AnadirPage implements OnInit {
     var meses = new Array 
     ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
     var f= new Date();
-    var fecha_actual = (f.getDate() + ' de ' + meses[f.getMonth()]+' de '+f.getFullYear()+' a las '+f.getHours()+':'+f.getMinutes()+':'+f.getMilliseconds());
-    console.log(nombre, descripcion, cantidad,' ',fecha_actual),
+    var fecha_creacion = (f.getDate() + ' de ' + meses[f.getMonth()]+' de '+f.getFullYear()+' a las '+f.getHours()+':'+f.getMinutes()+':'+f.getMilliseconds());
+    console.log(nombre, descripcion, cantidad,' ',fecha_creacion),
     console.log('clicked!')
     firebase.firestore().collection('comida').add({
       nombre: nombre,
@@ -28,7 +28,7 @@ export class AnadirPage implements OnInit {
       cantidad: parseInt(cantidad),
       precio: parseFloat(precio),
       imagen: imagen,
-      fecha_creacion: fecha_actual
+      fecha_creacion: fecha_creacion
     });
   }
     
