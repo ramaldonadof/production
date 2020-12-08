@@ -23,7 +23,9 @@ export class StockPage implements OnInit, OnChanges {
         }
 
         snapshot.forEach(doc => {
-          objects.push(doc.data());
+          objects.push({nombre: doc.data().nombre, descripcion: doc.data().descripcion, proveedor: doc.data().proveedor,
+            cantidad: doc.data().cantidad, precio: doc.data().precio, imagen: doc.data().imagen,
+            fecha_creacion: doc.data().fecha_creacion});
         });
       })
       .catch(err => {
@@ -48,10 +50,10 @@ export class StockPage implements OnInit, OnChanges {
     this.router.navigate(['/anadir']);
   }
 
-  delete(id, producto)
+  delete(producto, fecha_actual)
   {
     var ref = firebase.firestore().collection('comida');
-    ref.where('producto','==',producto).get()
+    ref.where('nombre','==',producto).get()
       .then(snapshot => {
         if (snapshot.empty) {
           console.log('No matching documents.');
@@ -60,6 +62,8 @@ export class StockPage implements OnInit, OnChanges {
 
         snapshot.forEach(doc => {
           console.log(doc.id, '=>', doc.data());
+          
+          if(fecha_actual == doc.data().fecha_actual)
           ref.doc(doc.id).delete();
         });
       })
