@@ -24,4 +24,10 @@ export class HomePage {
   {
     this.router.navigate(['/stock']);
   }
+  register() {
+    this.router.navigate(['/register']);
+  } //end of register
+  login() {
+    this.router.navigate(['/login']);
+  } 
 }
