@@ -15,11 +15,9 @@ export class AnadirPage implements OnInit {
   }
 
 
-  saveNewDates(nombre, descripcion, cantidad, precio, imagen) {  
-    var meses = new Array 
-    ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+  saveNewDates(nombre, descripcion, cantidad, precio, imagen) {
     var f= new Date();
-    var fecha_creacion = (f.getDate() + ' de ' + meses[f.getMonth()]+' de '+f.getFullYear()+' a las '+f.getHours()+':'+f.getMinutes()+':'+f.getMilliseconds());
+    var fecha_creacion = (f.getDate() + '_' + f.getMonth()+1+'_'+f.getFullYear()+'_'+f.getHours()+'_'+f.getMinutes()+'_'+f.getMilliseconds());
     console.log(nombre, descripcion, cantidad,' ',fecha_creacion),
     console.log('clicked!')
     firebase.firestore().collection('comida').add({
