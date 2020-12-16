@@ -26,7 +26,10 @@ export class AnadirPage implements OnInit {
       cantidad: parseInt(cantidad),
       precio: parseFloat(precio),
       imagen: imagen,
-      fecha_creacion: fecha_creacion
+      fecha_creacion: fecha_creacion,
+      promocion: false,
+      rating: 0,
+      descuento: 0,
     });
   }
     
