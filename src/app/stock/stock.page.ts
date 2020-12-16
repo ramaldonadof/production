@@ -14,7 +14,7 @@ export class StockPage implements OnInit, OnChanges {
   llenado()
   {
     var objects = [];
-    let ref = firebase.firestore().collection('comida');
+    let ref = firebase.firestore().collection('Comida');
     ref.get()
       .then(snapshot => {
         if (snapshot.empty) {
@@ -59,7 +59,7 @@ export class StockPage implements OnInit, OnChanges {
 
   delete(producto, fecha_creacion)
   {
-    var ref = firebase.firestore().collection('comida');
+    var ref = firebase.firestore().collection('Comida');
     ref.where('nombre','==',producto).get()
       .then(snapshot => {
         if (snapshot.empty) {
@@ -100,8 +100,9 @@ export class StockPage implements OnInit, OnChanges {
 
     var fecha = fecha_creacion.split("_");
     var vencimiento;
-    if(f.getMonth()+1 == fecha[1])//Durante un solo mes
+    if(f.getMonth() == fecha[1])//Durante el mismo mes
     {
+      console.log("Durante el mismo mes");
       if(f.getDate()-fecha[0]>3)
       {
         vencimiento = "Producto vencido";
@@ -165,7 +166,13 @@ export class StockPage implements OnInit, OnChanges {
       }
     }
     else{
-      vencimiento = "Producto vencido";
+      if(f.getDate()-fecha[0]>3)
+      {
+        vencimiento = "Producto vencido";
+      }
+      else{
+        vencimiento = f.getDate()-fecha[0];
+      }
     }
 
     return vencimiento;

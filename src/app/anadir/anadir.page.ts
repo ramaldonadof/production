@@ -20,7 +20,7 @@ export class AnadirPage implements OnInit {
     var fecha_creacion = (f.getDate() + '_' + f.getMonth()+1+'_'+f.getFullYear()+'_'+f.getHours()+'_'+f.getMinutes()+'_'+f.getMilliseconds());
     console.log(nombre, descripcion, cantidad,' ',fecha_creacion),
     console.log('clicked!')
-    firebase.firestore().collection('comida').add({
+    firebase.firestore().collection('Comida').add({
       nombre: nombre,
       descripcion: descripcion,
       cantidad: parseInt(cantidad),
