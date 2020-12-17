@@ -100,9 +100,9 @@ export class StockPage implements OnInit, OnChanges {
 
     var fecha = fecha_creacion.split("_");
     var vencimiento;
+    console.log(fecha[1]);
     if(f.getMonth() == fecha[1])//Durante el mismo mes
     {
-      console.log("Durante el mismo mes");
       if(f.getDate()-fecha[0]>3)
       {
         vencimiento = "Producto vencido";
@@ -166,13 +166,7 @@ export class StockPage implements OnInit, OnChanges {
       }
     }
     else{
-      if(f.getDate()-fecha[0]>3)
-      {
-        vencimiento = "Producto vencido";
-      }
-      else{
-        vencimiento = f.getDate()-fecha[0];
-      }
+      vencimiento = "Producto vencido";
     }
 
     return vencimiento;
