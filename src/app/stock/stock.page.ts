@@ -9,6 +9,16 @@ import { Router } from '@angular/router';
 })
 export class StockPage implements OnInit, OnChanges {
 
+  constructor(private router: Router) {}
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    throw new Error('Method not implemented.');
+  }
+
+  ngOnInit() {
+    this.stocks = this.llenado();
+  }
+
   public stocks = [];
 
   llenado()
@@ -36,15 +46,6 @@ export class StockPage implements OnInit, OnChanges {
       console.log(objects);
 
     return objects;
-  }
-
-  constructor(private router: Router) {}
-  ngOnChanges(changes: SimpleChanges): void {
-    throw new Error('Method not implemented.');
-  }
-
-  ngOnInit() {
-    this.stocks = this.llenado();
   }
 
   anadir()

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import firebase from 'firebase';
 import { Router } from '@angular/router';
-import { subscribeOn } from 'rxjs/operators';
-import { identifierModuleUrl } from '@angular/compiler';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-anadir',
@@ -10,121 +9,19 @@ import { identifierModuleUrl } from '@angular/compiler';
   styleUrls: ['./anadir.page.scss'],
 })
 export class AnadirPage implements OnInit {
-  constructor(private router: Router) { }
 
-  public stock = [];
-
-  public sucu = {id:'a', name:'b', set setId(newId)
-    {
-      this.id = newId;
-    },
-    get getId()
-    {
-      return this.id;
-    }};
+  constructor(private router: Router, private alertCtrl: AlertController) { }
 
   ngOnInit() {
+    this.sucursales = this.llenado();
   }
 
+  sucursales = [];
 
-  async saveNewDates(nombre, descripcion, cantidad, precio, imagen) {
-    var f= new Date();
-    var fecha_creacion = (f.getDate() + '_' + f.getMonth()+'_'+f.getFullYear()+'_'+f.getHours()+'_'+f.getMinutes()+'_'+f.getMilliseconds());
-    console.log(nombre, descripcion, cantidad,' ',fecha_creacion),
-    console.log('clicked!')
-
-    var fire = firebase.firestore();
-
-    const aux = await fire.collection('Comida').add({
-      nombre: nombre,
-      descripcion: descripcion,
-      cantidad: parseInt(cantidad),
-      precio: parseFloat(precio),
-      imagen: imagen,
-      fecha_creacion: fecha_creacion,
-      promocion: false,
-      rating: 0,
-      descuento: 0,
-      sucursal: "Sucursal 1"
-    });
-
-    let sfRef = fire.collection('Sucursales');
-    sfRef.get().then(collections => {
-    collections.forEach(collection => {
-      if(collection.data().name == "Sucursal 1")
-      {
-        console.log('Found subcollection with id:', collection.id);
-        fire.collection('Inventario').doc(collection.id).collection('comida').doc(aux.id).set({
-          nombre: nombre,
-          descripcion: descripcion,
-          cantidad: parseInt(cantidad),
-          precio: parseFloat(precio),
-          imagen: imagen,
-          fecha_creacion: fecha_creacion,
-          promocion: false,
-          rating: 0,
-          descuento: 0,
-          sucursal: "Sucursal 1"
-        });
-      }
-    });
-    });
-    
-    sfRef.get().then(collections => {
-    collections.forEach(collection => {
-      if(collection.data().name == "Sucursal 1")
-      {
-        console.log('Found subcollection with id:', collection.id);
-        fire.collection('Inventario').doc('comida').collection(collection.id).doc(aux.id).set({
-          nombre: nombre,
-          descripcion: descripcion,
-          cantidad: parseInt(cantidad),
-          precio: parseFloat(precio),
-          imagen: imagen,
-          fecha_creacion: fecha_creacion,
-          promocion: false,
-          rating: 0,
-          descuento: 0,
-          sucursal: "Sucursal 1"
-        });
-      }
-    });
-    });
-  }
-
-  listaSucursales(nombre_Sucursal)
+  llenado()
   {
-    var sucu; /*= {id:'a',name:'b', set setId(newId)
-    {
-      this.id = newId;
-    },
-    get getId()
-    {
-      return this.id;
-    }};*/
-
-    const aux = Object.create(sucu);
-    var object = [];
+    var objects = [];
     let ref = firebase.firestore().collection('Sucursales');
-    ref.get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
-          
-          if(doc.data().name == nombre_Sucursal)
-          {
-            aux.id = doc.id;
-            object.push({id: doc.id, nombre: doc.data().name});
-            aux.name = doc.data().name;
-          }
-        });
-      });
-      return aux;
-  }
-  
-  listaComida(fecha_creacion)
-  {
-    var objects;
-    let ref = firebase.firestore().collection('Comida');
     ref.get()
       .then(snapshot => {
         if (snapshot.empty) {
@@ -133,10 +30,8 @@ export class AnadirPage implements OnInit {
         }
 
         snapshot.forEach(doc => {
-          if(fecha_creacion == doc.data().fecha_creacion)
-          {
-            objects = doc.id;
-          }
+          console.log(doc.data().name);
+          objects.push({nombre: doc.data().name});
         });
       })
       .catch(err => {
@@ -145,6 +40,64 @@ export class AnadirPage implements OnInit {
       console.log(objects);
 
     return objects;
+  }
+
+  async saveNewDates(nombre, descripcion, cantidad, precio, imagen, sucursal) {
+    var f= new Date();
+    var fecha_creacion = (f.getDate() + '_' + f.getMonth()+'_'+f.getFullYear()+'_'+f.getHours()+'_'+f.getMinutes()+'_'+f.getMilliseconds());
+    console.log(sucursal.nombre);
+    console.log('clicked!');
+    
+    var fire = firebase.firestore();
+
+    const aux = await fire.collection('Comida').add({
+      nombre: nombre.value,
+      descripcion: descripcion.value,
+      cantidad: parseInt(cantidad.value),
+      precio: parseFloat(precio.value),
+      imagen: imagen.value,
+      fecha_creacion: fecha_creacion,
+      promocion: false,
+      rating: 0,
+      descuento: 0,
+      sucursal: sucursal.nombre
+    });
+
+    let sfRef = fire.collection('Sucursales');
+    
+    await sfRef.get().then(collections => {
+    collections.forEach(collection => {
+      if(collection.data().name == sucursal.nombre)
+      {
+        console.log('Found subcollection with id:', collection.id);
+        fire.collection('Inventario').doc('comida').collection(collection.id).doc(aux.id).set({
+          nombre: nombre.value,
+          descripcion: descripcion.value,
+          cantidad: parseInt(cantidad.value),
+          precio: parseFloat(precio.value),
+          imagen: imagen.value,
+          fecha_creacion: fecha_creacion,
+          promocion: false,
+          rating: 0,
+          descuento: 0,
+          sucursal: sucursal.nombre
+        });
+      }
+    });
+    });
+    nombre.value = '';
+    descripcion.value = '';
+    cantidad.value = '';
+    precio.value = '';
+    imagen.value = '';
+
+    let alert = this.alertCtrl.create({
+      header: 'Importante',
+      message: 'Guardado en la base de datos',
+      buttons: ['OK']
+    });
+    
+    (await alert).present();
   }
   }
 
