@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>RECETA EMPANADA JAMON Y QUESO</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+
+  <ion-item>
+    <ion-label>nombre</ion-label>
+    <ion-input [(ngModel)]="tareaEditando.nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>cantidad</ion-label>
+    <ion-input [(ngModel)]="tareaEditando.cantidad"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>fecha</ion-label>
+    
+    <ion-input [(ngModel)]="tareaEditando.fecha"></ion-input>
+  </ion-item>
+  
+  
+  <ion-button (click)="clicBotonInsertar()">Guardar Receta</ion-button>
+  <ion-button class="Retornar" shape="round" fill="outline" [routerLink]="['/home-receta']">Salir</ion-button>
+
+</ion-content>
+

@@ -10,9 +10,9 @@ export class HomePage {
 
   constructor(private router: Router) {}
 
-  anadir()
+  home_receta()
   {
-    this.router.navigate(['/anadir']);
+    this.router.navigate(['/home-receta']);
   }
 
   anadirin()
