@@ -49,7 +49,7 @@
       <ion-button color = dark (click)="delete(stock.nombre,stock.fecha_creacion)">
         <ion-icon name="trash"></ion-icon>
       </ion-button>
-      <ion-button color = dark>
+      <ion-button color = dark (click)="editar(stock.producto,stock.cantidad)">
         <ion-icon name="create"></ion-icon>
       </ion-button>
     </ion-item>

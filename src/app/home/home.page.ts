@@ -15,9 +15,9 @@ export class HomePage {
     this.router.navigate(['/anadir']);
   }
 
-  eliminar()
+  anadirin()
   {
-    this.router.navigate(['/eliminar']);
+    this.router.navigate(['/anadir-in']);
   }
 
   stock()
@@ -30,4 +30,8 @@ export class HomePage {
     this.router.navigate(['/register']);
   }
 
+  logout()
+  {
+    this.router.navigate(['/login']);
+  }
 }
