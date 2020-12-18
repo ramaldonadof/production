@@ -26,7 +26,8 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -35,7 +36,11 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },  {
+    path: 'anadir-in',
+    loadChildren: () => import('./anadir-in/anadir-in.module').then( m => m.AnadirInPageModule)
   },
+
 
 
 

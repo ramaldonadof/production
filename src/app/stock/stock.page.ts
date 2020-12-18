@@ -81,6 +81,13 @@ export class StockPage implements OnInit, OnChanges {
     this.stocks = this.llenado();
   }
 
+  editar( producto, cantidad)
+  {
+    console.log('Hola este es testClick ' + producto);
+    firebase.database().ref('stock/' + cantidad+'/').update;
+    this.stocks = this.llenado();
+  }
+
   testClick(id,producto,cantidad,imagen)
   {
     console.log('Hola este es testClick ' + producto);

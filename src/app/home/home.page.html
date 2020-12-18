@@ -7,33 +7,32 @@
     </ion-item>
     <ion-row class="ion-align-items-center" color="mycolor">
        
-      <ion-col size="1">
+      <ion-col size="1" >
         <img src="assets/img/5.jpg"/>
-        
       </ion-col>
 
       <ion-col size="2">
         <ion-segment>
-          <ion-card-title style="text-align: center;" color="mycolor">INVENTARIO</ion-card-title>   
+          <ion-card-title color="mycolor">INVENTARIO</ion-card-title>   
         </ion-segment>          
       </ion-col>
-    </ion-row>
     
+    </ion-row> 
   </ion-toolbar>
-  
-    
    </ion-header>
+
+   
 
 <ion-content color= "mycolor" >
   <ion-grid fixed>
     <ion-row>
         <ion-segment>
-          <ion-segment-button value="crear" (click)="anadir()">
-            <ion-label>CREAR PRODUCTO</ion-label>
+          <ion-segment-button value="anadir" (click)="anadir()">
+            <ion-label>PRODUCTOS(andres)</ion-label>
           </ion-segment-button>
           
-          <ion-segment-button value="eliminar" (click)="eliminar()">
-            <ion-label>ELIMINAR PRODUCTO</ion-label>
+          <ion-segment-button value="anadirin" (click)="anadirin()">
+            <ion-label>AÑADIR INSUMO</ion-label>
           </ion-segment-button>
 
             <ion-segment-button value="stock" (click)="stock()">
@@ -41,20 +40,26 @@
             </ion-segment-button>
 
               <ion-segment-button value="desechos">
-                <ion-label>DESECHOS</ion-label>
+                <ion-label>DESECHOS(vacio)</ion-label>
                </ion-segment-button>
 
                <ion-segment-button value="register" (click)="registrar()">
                <ion-label>REGISTRO</ion-label>
              </ion-segment-button>
+
+             <ion-segment-button value="logout" (click)="logout()">
+              <ion-label>SALIR</ion-label>
+            </ion-segment-button>
+
+             
         </ion-segment>
 
         <ion-card>
           <img src="assets/img/1.jpg"/>
+          <ion-card-header>
+            <ion-card-title>Dulce de leche</ion-card-title>
+          </ion-card-header>
           <ion-card-content>
-            <ion-card-tittle>
-              Dulce de leche
-            </ion-card-tittle>
             <p>
               Endulcemos la vida de los clientes!
             </p>
@@ -63,10 +68,10 @@
 
         <ion-card>
           <img src="assets/img/2.jpg"/>
+          <ion-card-header>
+            <ion-card-title>¿Dulce o salada?</ion-card-title>
+          </ion-card-header>
           <ion-card-content>
-            <ion-card-tittle>
-              Dulce o salada?
-            </ion-card-tittle>
             <p>
               Todo para satisfacer a la población!
             </p>
@@ -75,10 +80,10 @@
 
         <ion-card>
           <img src="assets/img/4.jpg"/>
+          <ion-card-header>
+            <ion-card-title>La mejores empanadas</ion-card-title>
+          </ion-card-header>
           <ion-card-content>
-            <ion-card-tittle>
-              La mejores empanadas
-            </ion-card-tittle>
             <p>
               Listas para combinar las pasiones de todos los clientes!
             </p>
