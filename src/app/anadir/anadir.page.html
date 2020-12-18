@@ -27,6 +27,15 @@
           </form>
         </ion-card-content>
       </ion-card>
+
+      <ion-card>
+        <ion-item>
+          <ion-label>Sucursal</ion-label>
+          <ion-select placeholder="Select One" #sucursal>
+            <ion-select-option *ngFor="let sucu of sucursales" [value]="sucu">{{sucu.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card>
                         
       <ion-card>
         <ion-card-content>
@@ -55,7 +64,7 @@
           
           <form>
           <ion-label>LINK IMAGEN</ion-label>  
-          <ion-input type="text" placeholder="Ingresar Link" #imagen></ion-input>
+          <ion-input type="url" placeholder="Ingresar Link" #imagen></ion-input>
           </form>
 
         </ion-card-content>
@@ -64,8 +73,8 @@
      </ion-col>
   </ion-row>
 
-  <ion-button class="Guardado" (click)= "saveNewDates(nombre.value, decripcion.value,
-    cantidad.value, precio.value ,imagen.value)" shape="round" fill="outline" >Guardar</ion-button>
+  <ion-button class="Guardado" (click)= "saveNewDates(nombre, decripcion,
+    cantidad, precio ,imagen, sucursal.value)" shape="round" fill="outline" >Guardar</ion-button>
   <ion-button class="Retornar" shape="round" fill="outline" onClick="history.go(-1);">Salir</ion-button>
 
 

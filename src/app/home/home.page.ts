@@ -17,17 +17,17 @@ export class HomePage {
 
   eliminar()
   {
-    this.router.navigate(['/anadir']);
+    this.router.navigate(['/eliminar']);
   }
 
   stock()
   {
     this.router.navigate(['/stock']);
   }
-  register() {
+
+  registrar()
+  {
     this.router.navigate(['/register']);
-  } //end of register
-  login() {
-    this.router.navigate(['/login']);
-  } 
+  }
+
 }

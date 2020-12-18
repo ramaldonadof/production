@@ -1,28 +1,23 @@
 <ion-header>
-   
   <ion-toolbar color="mycolor">
-    
+    <ion-item>
+      <ion-avatar slot="end">
+        <ion-icon name="people-outline"></ion-icon>
+      </ion-avatar>
+    </ion-item>
     <ion-row class="ion-align-items-center" color="mycolor">
-       //holllll
-      <ion-col size="2">
-        <img src="./assets/chacha.png" class="logo ion.text-left"> 
+       
+      <ion-col size="1">
+        <img src="assets/img/5.jpg"/>
+        
       </ion-col>
 
-      <ion-col size="5">
+      <ion-col size="2">
         <ion-segment>
-          <ion-segment-button value="Inventario">
-            <ion-label >INVENTARIO </ion-label>
-          </ion-segment-button>   
-          <ion-segment-button value="ProcesoProductivo">
-            <ion-label >PROCESO PRODUCTIVO </ion-label>
-          </ion-segment-button> 
-          <ion-segment-button value="InsumosPorLote">
-            <ion-label >INSUMOS POR LOTE </ion-label>
-          </ion-segment-button> 
+          <ion-card-title style="text-align: center;" color="mycolor">INVENTARIO</ion-card-title>   
         </ion-segment>          
       </ion-col>
     </ion-row>
-    
     
   </ion-toolbar>
   
@@ -30,23 +25,6 @@
    </ion-header>
 
 <ion-content color= "mycolor" >
-
-  <ion-fab vertical="top" horizontal="end" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="people-outline"></ion-icon>
-    </ion-fab-button>
-    
-    <ion-fab-list side="bottom" (click)= "register()">
-      <ion-fab-button><ion-icon name="add"></ion-icon></ion-fab-button>
-    </ion-fab-list>
-    <ion-fab-list side="start" (click)= "login()">
-      <ion-fab-button><ion-icon name="log-out"></ion-icon></ion-fab-button>
-    </ion-fab-list>
-    
-  </ion-fab>
-  
-
-
   <ion-grid fixed>
     <ion-row>
         <ion-segment>
@@ -64,10 +42,49 @@
 
               <ion-segment-button value="desechos">
                 <ion-label>DESECHOS</ion-label>
+               </ion-segment-button>
 
-          </ion-segment-button>
+               <ion-segment-button value="register" (click)="registrar()">
+               <ion-label>REGISTRO</ion-label>
+             </ion-segment-button>
         </ion-segment>
+
+        <ion-card>
+          <img src="assets/img/1.jpg"/>
+          <ion-card-content>
+            <ion-card-tittle>
+              Dulce de leche
+            </ion-card-tittle>
+            <p>
+              Endulcemos la vida de los clientes!
+            </p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <img src="assets/img/2.jpg"/>
+          <ion-card-content>
+            <ion-card-tittle>
+              Dulce o salada?
+            </ion-card-tittle>
+            <p>
+              Todo para satisfacer a la población!
+            </p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <img src="assets/img/4.jpg"/>
+          <ion-card-content>
+            <ion-card-tittle>
+              La mejores empanadas
+            </ion-card-tittle>
+            <p>
+              Listas para combinar las pasiones de todos los clientes!
+            </p>
+          </ion-card-content>
+        </ion-card>
+
     </ion-row>
   </ion-grid>
 </ion-content>
-

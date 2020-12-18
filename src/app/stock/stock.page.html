@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>stock</ion-title>
-    <ion-button color = medium>
-      <ion-icon name="arrow-back" ></ion-icon>
+    <ion-button color = medium (click)="menu()">
+      <ion-icon name="arrow-back"></ion-icon>
     </ion-button>
   </ion-toolbar>
   <ion-button color = dark (click)="anadir()">
@@ -11,26 +11,6 @@
 </ion-header>
 
 <ion-content id='conteiner'>
-  <ion-radio-group value="biff">
-    <ion-list-header>
-      <ion-label>Name</ion-label>
-    </ion-list-header>
-
-    <ion-item>
-      <ion-label>Todo</ion-label>
-      <ion-radio slot="start" value="biff"></ion-radio>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Productos</ion-label>
-      <ion-radio slot="start" value="griff"></ion-radio>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Insumos</ion-label>
-      <ion-radio slot="start" value="buford"></ion-radio>
-    </ion-item>
-  </ion-radio-group>
 
   <ion-item>
     <ion-thumbnail slot="start">
@@ -45,7 +25,7 @@
       Cantidad
     </ion-label>
     <ion-label>
-      Fecha_creacion
+      Tiempo de vida
     </ion-label>
   </ion-item>
 
@@ -57,13 +37,13 @@
       <ion-label>
         {{stock.nombre}}
       </ion-label>
-      <ion-label>
+      <ion-label class="descriptionC">
         {{stock.descripcion}}
       </ion-label>
-      <ion-label>
+      <ion-label class="cantidadC">
         {{stock.cantidad}}
       </ion-label>
-      <ion-label>
+      <ion-label class="dateC">
         {{stock.fecha_creacion}}
       </ion-label>
       <ion-button color = dark (click)="delete(stock.nombre,stock.fecha_creacion)">
