@@ -1,14 +1,13 @@
 <ion-header>
   <ion-toolbar color="mycolor">
-    <ion-item>
-      <ion-avatar slot="end">
-        <ion-icon name="people-outline"></ion-icon>
-      </ion-avatar>
-    </ion-item>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main"></ion-menu-button>
+    </ion-buttons>
+
     <ion-row class="ion-align-items-center" color="mycolor">
        
       <ion-col size="1" >
-        <img src="assets/img/5.jpg"/>
+        <img src="assets/img/5.png"/>
       </ion-col>
 
       <ion-col size="2">
@@ -28,7 +27,7 @@
     <ion-row>
         <ion-segment>
           <ion-segment-button value="anadir" (click)="home_receta()">
-            <ion-label>PRODUCTOS(andres)</ion-label>
+            <ion-label>PRODUCTOS</ion-label>
           </ion-segment-button>
           
           <ion-segment-button value="anadirin" (click)="anadirin()">
@@ -39,11 +38,7 @@
               <ion-label>STOCK</ion-label>
             </ion-segment-button>
 
-              <ion-segment-button value="desechos">
-                <ion-label>DESECHOS(vacio)</ion-label>
-               </ion-segment-button>
-
-               <ion-segment-button value="register" (click)="registrar()">
+            <ion-segment-button value="register" (click)="registrar()">
                <ion-label>REGISTRO</ion-label>
              </ion-segment-button>
 

@@ -6,7 +6,7 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  color: blueviolet
+  color: rgb(240, 161, 14)
 }
 
 #container strong {
@@ -18,8 +18,8 @@
   font-size: 16px;
   line-height: 22px;
 
-  color: #8c8c8c;
-
+  background-color: #f6d83c;
+  color: white;
   margin: 0;
 }
 
@@ -27,10 +27,11 @@
   text-decoration: none;
 }
 ion-label{
-  color: #40ac6b
+  color: #FF8C00
 
 }
 ion-toolbar{
-  color: #40ac6b
+  background-color: #f6d83c;
+  color: white;
 
 }

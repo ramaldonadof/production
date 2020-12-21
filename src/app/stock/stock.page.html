@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>stock</ion-title>
-    <ion-button color = medium (click)="menu()">
+    <ion-button class= "boton1" color = medium (click)="menu()">
       <ion-icon name="arrow-back"></ion-icon>
     </ion-button>
   </ion-toolbar>
-  <ion-button color = dark (click)="anadir()">
+  <ion-button class= "boton1" (click)="anadir()">
     <ion-icon name="add"></ion-icon>
   </ion-button>
 </ion-header>
@@ -19,7 +19,7 @@
       Nombre
     </ion-label>
     <ion-label>
-      Descripcion
+      Sucursal
     </ion-label>
     <ion-label>
       Cantidad
@@ -37,19 +37,19 @@
       <ion-label>
         {{stock.nombre}}
       </ion-label>
-      <ion-label class="descriptionC">
-        {{stock.descripcion}}
+      <ion-label class="sucursalC">
+        {{stock.sucursal}}
       </ion-label>
       <ion-label class="cantidadC">
         {{stock.cantidad}}
       </ion-label>
       <ion-label class="dateC">
-        {{stock.fecha_creacion}}
+        {{stock.vencimiento}}
       </ion-label>
-      <ion-button color = dark (click)="delete(stock.nombre,stock.fecha_creacion)">
+      <ion-button class= "boton2" (click)="delete(stock.nombre,stock.fecha_creacion, stock)">
         <ion-icon name="trash"></ion-icon>
       </ion-button>
-      <ion-button color = dark (click)="editar(stock.producto,stock.cantidad)">
+      <ion-button class= "boton2" (click)="editar(stock.producto,stock.cantidad)">
         <ion-icon name="create"></ion-icon>
       </ion-button>
     </ion-item>

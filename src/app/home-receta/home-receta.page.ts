@@ -46,7 +46,7 @@ export class HomeRecetaPage implements OnInit {
 
   receta_emq()
   {
-    this.router.navigate(['/receta-emq']);
+    this.router.navigate(['/receta-eq']);
   }
 
   receta_ejq()
