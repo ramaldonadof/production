@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { RecetaEmcPageRoutingModule } from './receta-emc-routing.module';
 
-import { RecetaEmcPage } from './receta-emc.page';
+import { RecetaEmcPage } from "./receta-emc.page";
 
 @NgModule({
   imports: [

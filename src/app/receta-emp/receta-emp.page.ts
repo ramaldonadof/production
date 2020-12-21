@@ -3,8 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
-import { FirestoreService } from '../firestore.service';
-import { Tarea } from '../tarea';
+import { FirestoreService } from '../../firestore.service';
+import { Tarea } from '../../tarea';
 @Component({
   selector: 'app-receta-emp',
   templateUrl: './receta-emp.page.html',
